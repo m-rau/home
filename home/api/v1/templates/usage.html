@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% raw rsc %}
+</head>
+<body>
+  <div id="myplot"></div>
+  <script>
+  fetch('/usage/login/plot?start={{ start }}&end={{ end }}&aggregate={{ aggregate }}')
+    .then(
+        function(response) {
+            return response.json().then(
+                function(res) {
+                    return res["data"];
+                }
+            )
+        }).then(
+            function(item) {
+                Bokeh.embed.embed_item(item);
+            }
+        )
+  </script>
+</body>

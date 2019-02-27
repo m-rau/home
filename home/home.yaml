@@ -1,2 +1,7 @@
 DEFAULT:
   mongo_database: home
+
+usage:
+  start: !!timestamp 2018-01-01 00:00:00
+  sys_log: !connect mongodb://mra:Metheny2@pnbi_mongodb1:27017/core3/sys.log
+  login: !connect mongodb://login
