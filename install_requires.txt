@@ -1,3 +1,3 @@
-core4@git+ssh://git.bi.plan-net.com/srv/git/core4.git
+git+ssh://git.bi.plan-net.com/srv/git/core4.git@develop 
 bokeh>=1.0.4
 
