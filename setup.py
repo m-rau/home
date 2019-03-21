@@ -68,7 +68,7 @@ class BuildCore4(build_py):
 setup(
     name="home",
     version=home.__version__,
-    packages=find_packages(exclude=['docs', 'tests*']),
+    packages=find_packages(exclude=['docs']),
     install_requires=read_install_requires() + [
         # put your package requirements here or into install_requires.txt
     ],
