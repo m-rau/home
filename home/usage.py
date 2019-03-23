@@ -1,15 +1,14 @@
 import re
 from datetime import timedelta, datetime
 
-import pandas as pd
-from core4.queue.helper.job.base import CoreLoadJob
+from core4.queue.job import CoreJob
 from core4.util.node import now
 from dateutil.parser import parse
 
 parse_date = lambda s: None if s is None else parse(s)
 
 
-class AggregateCore4Usage(CoreLoadJob):
+class AggregateCore4Usage(CoreJob):
     """
     Reads ``sys.log`` as defined by project configuration key
     ``home.usage.sys_log`` and aggregates all user login logging messages into
@@ -49,16 +48,9 @@ class AggregateCore4Usage(CoreLoadJob):
         while start <= end:
             n += 1.
             self.progress(n / ndays, "work [%s] day [%d]", start, n)
-            self.reset(start)
             self.extract(start)
+            self.cookie.set(offset=datetime.combine(end, datetime.min.time()))
             start += timedelta(days=1)
-        self.cookie.set(offset=datetime.combine(end, datetime.min.time()))
-
-    def reset(self, start):
-        start = datetime.combine(start, datetime.min.time())
-        ret = self.target_collection.delete_one({"date": start})
-        self.logger.debug("removed [%d] records with [%s]", ret.deleted_count,
-                          start)
 
     def extract(self, start):
         end = start + timedelta(days=1)
