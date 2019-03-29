@@ -72,6 +72,7 @@ setup(
     install_requires=read_install_requires() + [
         # put your package requirements here or into install_requires.txt
     ],
+    include_package_data=True,
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
         'Programming Language :: Python',
