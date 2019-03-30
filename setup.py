@@ -6,5 +6,5 @@ import home
 setup(
     name="home",
     version=home.__version__,
-    packages=find_packages(exclude=['docs', 'tests*'])
+    packages=find_packages(exclude=['docs*', 'tests*'])
 )
