@@ -1,5 +1,9 @@
-from core4.setup import setup
 from setuptools import find_packages
+
+try:
+    from core4.setup import setup
+except:
+    from core4.script.installer.core4.setup import setup
 
 import home
 
