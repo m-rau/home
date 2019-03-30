@@ -1,6 +1,12 @@
 {
   "name": "core-widgets",
-  "core4" : ["yarn build"],
+  "core4" : {
+    "build_command": [
+      "yarn install",
+      "yarn build"
+    ],
+    "dist": "./dist"
+  },
   "version": "0.1.0",
   "private": true,
   "scripts": {
