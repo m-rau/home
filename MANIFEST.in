@@ -1,2 +1,1 @@
 recursive-include home/api/v1/templates *
-graft home/webapps/widgets/dist
