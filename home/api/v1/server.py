@@ -9,7 +9,7 @@ class UsageServer(CoreApiContainer):
     root = "/usage"
     rules = [
         (r'/login', LoginCountHandler),
-        (r'/login/(.+)', LoginCountHandler),
+        (r'/login/(.+)', LoginCountHandler, None, "LoginCountHandler"),
     ]
 
 

@@ -42,9 +42,10 @@ class LoginCountHandler(CoreRequestHandler):
             401 Unauthorized:
 
         Examples:
-            GET http://devops:5001/usage/login?start=2017-01-01&aggregate=W
-            GET http://devops:5001/usage/login/raw?content_type=json
+            >>> GET http://devops:5001/usage/login?start=2017-01-01&aggregate=W
+            >>> GET http://devops:5001/usage/login/raw?content_type=json
         """
+
         end = self.get_argument("end", as_type=datetime, default=now())
         start = self.get_argument("start", as_type=datetime,
                                   default=end - timedelta(days=90))
@@ -66,8 +67,8 @@ class LoginCountHandler(CoreRequestHandler):
             return self.reply(json_item(p, "myplot"))
         return self.render("templates/usage.html",
                            rsc=CDN.render(),
-                           start=start,
-                           end=end,
+                           start=start.date(),
+                           end=end.date(),
                            aggregate=aggregate)
 
     async def _query(self, start, end, aggregate):

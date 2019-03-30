@@ -6,7 +6,7 @@
 <body>
   <div id="myplot"></div>
   <script>
-  fetch('/usage/login/plot?start={{ start }}&end={{ end }}&aggregate={{ aggregate }}')
+  fetch('{{ request.path }}/plot?start={{ start }}&end={{ end }}&aggregate={{ aggregate }}')
     .then(
         function(response) {
             return response.json().then(
