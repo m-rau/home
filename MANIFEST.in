@@ -1,1 +1,1 @@
-recursive-include home/ *
+recursive-include home/api/v1/templates *
