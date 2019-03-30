@@ -1,2 +1,2 @@
-core4 | git+https://github.com/plan-net/core4.git@develop
+core4 @ git+https://github.com/plan-net/core4.git@develop
 bokeh<=1.0.4, >1.0.1
